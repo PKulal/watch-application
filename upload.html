@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Shop</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for additional styling */
+        body {
+            background-color: #e2e8f0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .header,
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+        }
+
+        .footer-content {
+            color: #ccc;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-container label {
+            font-weight: 600;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        #watches-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+
+        .watch-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .watch-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .watch-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .watch-item p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .watch-item {
+                max-width: 150px;
+                padding: 15px;
+            }
+
+            .watch-item h3 {
+                font-size: 16px;
+            }
+
+            .watch-item p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header with Navigation Bar -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">Watch Shop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Body Section with Form -->
+    <section class="form-section py-5">
+        <div class="container">
+            <div class="form-container">
+                <h2>Select Your Watch to Upload</h2>
+                <form id="watch-form" enctype="multipart/form-data">
+                    <!-- Watch Name -->
+                    <label for="name">Watch Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter watch name" required />
+
+                    <!-- Watch Brand -->
+                    <label for="brand">Watch Brand:</label>
+                    <input type="text" id="brand" name="brand" placeholder="Enter watch brand" required />
+
+                    <!-- Watch Price -->
+                    <label for="price">Watch Price:</label>
+                    <input type="number" id="price" name="price" placeholder="Enter watch price" required />
+
+                    <!-- Watch Image -->
+                    <label for="image">Upload Image:</label>
+                    <input type="file" id="image" name="image" required />
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">Add Watch</button>
+                </form>
+            </div>
+        </div>
+
+        <p class="text-center mt-5 text-lg font-semibold">Watches</p>
+        <div id="watches-container">
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Watch Shop. All rights reserved.</p>
+                <p>Follow us on:</p>
+                <a href="#" class="text-light me-2">Facebook</a>
+                <a href="#" class="text-light me-2">Twitter</a>
+                <a href="#" class="text-light">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script to handle dynamic watch model selection -->
+    <script>
+        document.getElementById('watchBrand').addEventListener('change', function () {
+            const watchBrand = this.value;
+            const watchModelSelect = document.getElementById('watchModel');
+
+            // Clear existing options
+            watchModelSelect.innerHTML = '<option value="" selected>Select a model...</option>';
+
+            // Add new options based on selected brand
+            let models = [];
+            if (watchBrand === 'Rolex') {
+                models = ['Submariner', 'Daytona', 'Explorer'];
+            } else if (watchBrand === 'Omega') {
+                models = ['Seamaster', 'Speedmaster', 'Constellation'];
+            } else if (watchBrand === 'Tag Heuer') {
+                models = ['Carrera', 'Aquaracer', 'Monaco'];
+            }
+
+            models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model;
+                option.textContent = model;
+                watchModelSelect.appendChild(option);
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
